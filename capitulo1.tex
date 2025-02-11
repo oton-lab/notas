@@ -1,0 +1,150 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Crisis en las Matemáticas: La Serie de Fourier}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Capítulo 1 Crisis en las Matemáticas: La Serie de Fourier}
+
+La crisis estalló cuatro días antes de Navidad en 1807. El edificio del cálculo se vio sacudido hasta sus cimientos. En retrospectiva, las dificultades se habían estado acumulando durante décadas. Sin embargo, aunque la mayoría de los científicos se dieron cuenta de que algo había sucedido, pasarían cincuenta años antes de que se comprendiera el impacto completo del evento. El siglo XIX vería investigaciones cada vez más amplias sobre los supuestos del cálculo, una inspección y reajuste de la estructura desde los cimientos hasta la cima, una reconstrucción tan exhaustiva que el cálculo recibió un nuevo nombre: \textit{Análisis}. Pocos de los que presenciaron el incidente de 1807 habrían reconocido las matemáticas tal como estaban cien años después. El siglo XX comenzaría con una redefinición de la integral por Henri Lebesgue y un examen de los fundamentos lógicos de la aritmética por Bertrand Russell y Alfred North Whitehead, ambas consecuencias directas de los eventos puestos en movimiento en ese año crítico. La crisis fue precipitada por la presentación en el Institut de France en París de un manuscrito, \textit{Teoría de la Propagación del Calor en los Cuerpos Sólidos}, por el prefecto del departamento de Isère de 39 años, Joseph Fourier.
+
+\subsection*{1.1 Antecedentes del Problema}
+
+Fourier comenzó sus investigaciones con el problema de describir el flujo de calor en una placa rectangular muy larga y delgada o lámina. Consideró la situación en la que no hay pérdida de calor en ninguna de las caras de la placa y los dos lados largos se mantienen a una temperatura constante que estableció igual a \(0\). El calor se aplica de alguna manera conocida a uno de los lados cortos, y el lado corto restante se trata como si estuviera infinitamente lejos (Figura 1.1). Esta lámina se puede representar en el plano \(w, x\) por una región delimitada por debajo por \(x = -1\), por arriba por \(x = 1\), y a la izquierda por \(w = 0\). Tiene una temperatura constante de \(0\) a lo largo de los bordes superior e inferior, de modo que si \(z(w, x)\) representa la temperatura en el punto \((w, x)\), entonces
+
+\[
+z(w, -1) = z(w, 1) = 0,\quad w > 0. \tag{1.1}
+\]
+
+La distribución de temperatura conocida a lo largo del borde izquierdo se describe como una función de \(x\):
+
+\[
+z(0, x) = f(x). \tag{1.2}
+\]
+
+\subsection*{Figura 1.1: La placa delgada de Fourier}
+
+Fourier se restringió al caso en que \( f \) es una función par de \( x \): \( f(-x) = f(x) \). El primer y más importante ejemplo que consideró fue el de una temperatura constante normalizada a
+
+\[
+z(0, x) = f(x) = 1. \tag{1.3}
+\]
+
+La tarea era encontrar una solución estable bajo estas restricciones.
+
+Fourier comenzó demostrando que una solución estacionaria satisface la ecuación diferencial ahora conocida como la ecuación de Laplace:
+
+\[
+\frac{\partial^2 z}{\partial w^2} + \frac{\partial^2 z}{\partial x^2} = 0. \tag{1.4}
+\]
+
+Pierre Simon Laplace (1749–1827) y otros habían encontrado esta ecuación en varios contextos. En terminología moderna, es simplemente la observación de que cuando el flujo de calor (\( \nabla z \)) ha alcanzado un estado de equilibrio, es incompresible (\( \nabla \cdot \nabla z = 0 \)).
+
+Para resolver su ecuación diferencial parcial (1.4), Fourier introdujo una técnica que es estándar hoy en día. Buscó soluciones especiales de la forma
+
+\[
+z = \phi(w) \psi(x). \tag{1.5}
+\]
+
+Cuando \( z \) es de esta forma, la ecuación (1.4) se reduce a
+
+\[
+\phi''(w) \psi(x) + \phi(w) \psi''(x) = 0, \tag{1.6}
+\]
+
+o, asumiendo que las segundas derivadas no son cero,
+
+\[
+\frac{\phi(w)}{\phi''(w)} + \frac{\psi(x)}{\psi''(x)} = 0,
+\]
+\[
+\frac{\phi(w)}{\phi''(w)} = -\frac{\psi(x)}{\psi''(x)}. \tag{1.7}
+\]
+
+El lado izquierdo de la ecuación (1.7) es independiente de \( x \), mientras que el lado derecho es independiente de \( w \). Esto implica que ambos lados son independientes de \( w \) y \( x \), y por lo tanto cada una de estas razones es constante. Se sigue que el signo de \(\psi(x)\) es siempre el mismo que el signo de \(\psi''(x)\) o siempre el opuesto. La ecuación (1.1) nos dice que
+
+\[
+\psi(-1) = \psi(1) = 0,
+\]
+
+y por lo tanto \(\psi(x)/\psi''(x)\) debe ser negativo:
+
+\[
+\frac{\phi(w)}{\phi''(w)} = A > 0, \quad \frac{\psi(x)}{\psi''(x)} = -A < 0,
+\]
+
+para alguna constante positiva \(A\). Fourier estableció \(A = 1/n^2\) y resolvió para \(\phi(w) = c_1 e^{-nw} + c_3 e^{nw}\) y \(\psi(x) = c_2 \cos nx + c_4 \sin nx\). El coeficiente de \(\sin nx\) debe ser cero porque \(\psi\) es una función par de \(x\). Luego argumentó que \(c_3\) debe ser cero porque la temperatura se acercará a 0 a medida que nos alejamos de la fuente de calor en \(w = 0\). Había encontrado una solución:
+
+\[
+z(w,x) = ae^{-nw} \cos nx,
+\]
+
+donde \(a\) y \(n\) son constantes desconocidas. La solución general es una suma de tales funciones:
+
+\[
+z = a_1 e^{-n_1 w} \cos n_1 x + a_2 e^{-n_2 w} \cos n_2 x + a_3 e^{-n_3 w} \cos n_3 x + \cdots . \tag{1.8}
+\]
+
+La ecuación (1.1) se cumple si y solo si cada \(n_i\) es un múltiplo impar de \(\pi/2\):
+
+\[
+n_1 = \frac{\pi}{2}, \quad n_2 = \frac{3\pi}{2}, \quad n_3 = \frac{5\pi}{2}, \quad \cdots.
+\]
+
+La distribución de temperatura a lo largo del borde izquierdo, \(z(0,x) = f(x)\), implica que
+
+\[
+f(x) = a_1 e^{-n_1 0} \cos n_1 x + a_2 e^{-n_2 0} \cos n_2 x + a_3 e^{-n_3 0} \cos n_3 x + \cdots
+\]
+\[
+= a_1 \cos \frac{\pi x}{2} + a_2 \cos \frac{3\pi x}{2} + a_3 \cos \frac{5\pi x}{2} + \cdots . \tag{1.9}
+\]
+
+Fourier había reducido su problema al de tomar una función par y expresarla como una suma posiblemente infinita de cosenos, lo que hoy llamamos una serie de Fourier. Su siguiente paso fue demostrar cómo lograr esto.
+
+Aquí estaba el meollo de la crisis. Las sumas infinitas de funciones trigonométricas habían aparecido antes. Daniel Bernoulli (1700–1782) propuso tales sumas en 1753 como soluciones al problema de modelar la cuerda vibrante. Habían sido descartadas de manera sumaria por el más grande matemático de la época, Leonhard Euler (1707–1783). Quizás Euler olfateó el peligro que presentaban para su comprensión del cálculo. El comité que revisó el manuscrito de Fourier: Laplace, Joseph Louis Lagrange (1736–1813), Sylvestre François Lacroix (1765–1843), y Gaspard Monge (1746–1818), hizo eco del rechazo de Euler en un resumen poco entusiasta escrito por Siméon Denis Poisson (1781–1840). Lagrange más tarde haría explícitas sus objeciones. Hasta bien entrada la década de 1820, las series de Fourier seguirían siendo sospechosas porque contradecían la sabiduría establecida sobre la naturaleza de las funciones.
+
+Fourier hizo más que sugerir que la solución a la ecuación del calor estaba en su serie trigonométrica. Dio un medio simple y práctico de encontrar esos coeficientes, los \(a_i\). Al hacerlo, produjo una gran variedad de soluciones verificables a problemas específicos. La proposición de Bernoulli podía debatirse indefinidamente con poco efecto, ya que era solo teórica. El método de Fourier realmente podía implementarse. No podía rechazarse sin forzar la pregunta de por qué parecía funcionar.
+
+\subsection*{4 Capítulo 1. Crisis en las Matemáticas: La Serie de Fourier}
+
+Hay problemas con las series de Fourier, pero son más sutiles de lo que nadie se dio cuenta en ese invierno de 1807-08. No fue hasta la década de 1850 que Bernhard Riemann (1826-1866) y Karl Weierstrass (1815-1897) aclararían la confusión que había recibido a Fourier y delimitarían claramente las preguntas reales.
+
+\subsection*{Ejercicios}
+
+1. Asumimos que \( \phi''(w) \) y \( \psi''(x) \) no son idénticamente cero. De la ecuación (1.6) vemos que si \( \phi''(w) = 0 \), entonces \( \phi(w) = 0 \) o \( \psi''(x) = 0 \). La primera posibilidad implica que \( z(w,x) = 0 \), una solución poco interesante a la ecuación de Laplace. Si aceptamos la segunda posibilidad, entonces \( \phi(w) \) y \( \psi(x) \) deben ser funciones lineales de \( w \) y \( x \), respectivamente. Usando la ecuación (1.1) y el hecho de que \( \psi \) es una función par de \( x \), encuentra todas las soluciones posibles a la ecuación (1.4) en las que \( z(w,x) = \phi(w)\psi(x) \) y \( \phi''(w) = \psi''(x) = 0 \).
+
+2. Demuestra que si \( \psi(-1) = \psi(1) = 0 \), entonces \( \psi(x) \) y \( \psi''(x) \) no pueden ser ambos estrictamente positivos o ambos estrictamente negativos para todo \( x \) entre -1 y 1.
+
+3. Demuestra que si
+\[
+\frac{\phi(w)}{\phi''(w)} = \frac{1}{n^2} = \frac{-\psi(x)}{\psi''(x)},
+\]
+entonces \( \phi(w) = c_1 e^{-nw} + c_3 e^{nw}, \psi(x) = c_2 \cos nx + c_4 \sin nx \). Usa el hecho de que \( \psi \) es par para demostrar que \( c_4 \) debe ser cero.
+
+4. ¿Cuál es la forma general de \( \phi(w)\psi(x) \) si insistimos en medir nuestros ángulos en grados en lugar de radianes?
+
+5. Mathematica puede usarse para graficar superficies usando el comando Plot3D. Por ejemplo, para graficar la superficie \( z = e^{-3\pi w/2} \cos(3\pi x/2) \) sobre \( 0 \leq w \leq 0.6 \) y \(-1 \leq x \leq 1 \), ingresa
+\[
+\text{Plot3D}[ \text{Exp}[-3 \text{Pi} v/2] \text{Cos}[3 \text{Pi} x/2],\{v,0,0.6\},\{x,-1,1\}, \text{PlotRange}->\text{All} ]
+\]
+
+Usa Mathematica para graficar las superficies
+\[
+z = e^{n\pi w/2} \cos(n\pi x/2), \quad \text{y} \quad z = e^{-n\pi w/2} \cos(n\pi x/2)
+\]
+sobre la franja \( 0 \leq w \leq 0.6, -1 \leq x \leq 1 \), para \( n = 1, 3, 5, 7 \). Explica con tus propias palabras por qué la primera función, \( z = e^{n\pi w/2} \cos(n\pi x/2) \), no podría ser una solución al problema de flujo de calor de Fourier.
+
+6. Usa Mathematica para graficar cada una de las siguientes superficies sobre \( 0 \leq w \leq 0.6, -1 \leq x \leq 1 \):
+(a) \( z(w,x) = 3e^{-\pi w/2} \cos(\pi x/2) + e^{-3\pi w/2} \cos(3\pi x/2) \),
+(b) \( z(w,x) = e^{-\pi w/2} \cos(\pi x/2) + e^{-3\pi w/2} \cos(3\pi x/2) + e^{-5\pi w/2} \cos(5\pi x/2) \),
+(c) \( z(w,x) = e^{-\pi w/2} \cos(\pi x/2) - e^{-5\pi w/2} \cos(5\pi x/2) + e^{-9\pi w/2} \cos(9\pi x/2) \).
+
+\end{document}
